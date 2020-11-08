@@ -29,7 +29,7 @@ namespace ITGFinal
             string connectionSound = Configuration.GetConnectionString("SoundConnection");
 
             services.AddDbContext<UserContext>(options => options.UseSqlServer(connectionUser));
-            services.AddDbContext<SoundContext>(options => options.UseSqlServer(connectionUser));
+            services.AddDbContext<SoundContext>(options => options.UseSqlServer(connectionSound));
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
