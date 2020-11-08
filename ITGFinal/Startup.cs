@@ -25,8 +25,11 @@ namespace ITGFinal
 
         public void ConfigureServices(IServiceCollection services)
         {
-            string connection = Configuration.GetConnectionString("UserConnection");
-            services.AddDbContext<UserContext>(options => options.UseSqlServer(connection));
+            string connectionUser = Configuration.GetConnectionString("UserConnection");
+            string connectionSound = Configuration.GetConnectionString("SoundConnection");
+
+            services.AddDbContext<UserContext>(options => options.UseSqlServer(connectionUser));
+            services.AddDbContext<SoundContext>(options => options.UseSqlServer(connectionUser));
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>

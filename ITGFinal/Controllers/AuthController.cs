@@ -14,16 +14,29 @@ namespace ITGFinal.Controllers
 {
     public class AuthController : Controller
     {
-        private UserContext db;
+        private readonly UserContext db;
         public AuthController(UserContext context)
         {
             db = context;
         }
+
+        public string Index()
+        {
+            return "noOK";
+        }
+
+        [HttpPost]
+        public string Index(string token)
+        {
+            return "OK";
+        }
+
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginModel model)
